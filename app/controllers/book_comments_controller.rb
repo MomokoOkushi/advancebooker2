@@ -7,6 +7,7 @@ class BookCommentsController < ApplicationController
     comment.save
     redirect_to books_path
   end
+  
   def destroy
     BookComment.find(params[:id]).destroy
     redirect_to books_path
