@@ -25,18 +25,17 @@
           <%= link_to "フォローする", user_relationships_path(user.id), method: :post %>
         <% end %>
       </td>
+    </th>
+  </tr>
+  <tr>
+    <th>
       <td>
         <% if @user != current_user %>
           <% if (current_user.following?(@user)) && (@user.following?(current_user)) %>
             <% if @isRoom == true %>
               <%= link_to "チャットへ", rooms_show_path(@roomId), class: "btn btn-primary" %>
             <% else %>
-              <%= form_with model: @room do |f| %>
-                <%= fields_for @entry do |e| %>
-                  <%= e.hidden_field :user_id, value: @user.id %>
-                <% end %>
-                <%= f.submit "チャットを始める", class: "btn btn-primary user-show-chat" %>
-              <% end %>
+              <%= link_to 'chatを始める', "/rooms/show/#{@roomid}", class: "ml-3" %>
             <% end %>
           <% end %>
         <% end %>
