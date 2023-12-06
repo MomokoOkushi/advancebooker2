@@ -10,12 +10,12 @@ class User < ApplicationRecord
 
    # 自分がフォローされる（被フォロー）側の関係性
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  # 被フォロー関係を通じて参照→自分をフォローしている人
+  # 被フォロー関係を通じて参照→自分をフォローしている人を参照
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   # 自分がフォローする（与フォロー）側の関係性
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  # 与フォロー関係を通じて参照→自分がフォローしている人
+  # 与フォロー関係を通じて参照→自分がフォローしている人を
   has_many :followings, through: :relationships, source: :followed
   
   #DM機能のアソシエーション
