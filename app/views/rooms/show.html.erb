@@ -25,11 +25,9 @@
         <% end %>
       <% end %>
     </div>
-
     <div class="errors">
       <%= render "layouts/errors", obj: @message %>
     </div>
-
     <div class="posts">
       <%= form_with model: @message, local: false do |f| %>
         <%= f.text_field :message, placeholder: "140字以内でメッセージを入力してください", size: 70, class: "form-text-field" %>

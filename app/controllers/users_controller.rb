@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @books = @user.books
     @book = Book.new
 
-    #ここからDM機能の記述(@user = User.find(params[:id])はすでに記述済みのため割愛)
+    #DM機能の記述(@user = User.find(params[:id])はすでに記述済みのため割愛)
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry = Entry.where(user_id: @user.id)
     unless @user.id == current_user.id
@@ -33,6 +33,7 @@ class UsersController < ApplicationController
     @book = Book.new
     @userinfo = current_user
   end
+  
   def edit
     @user = User.find(params[:id])
   end
