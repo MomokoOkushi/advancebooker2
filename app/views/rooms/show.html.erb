@@ -14,20 +14,22 @@
       <% if @messages.present? %>
         <% @messages.each do |m| %>
           <% if m.user_id == current_user.id %>
-              <div class="chat-fukidashi" style="text-align: right;">
-                <strong><%= m.content %></strong>
-              </div>
+            <div class="chat-fukidashi" style="text-align: right;">
+              <strong><%= m.content %></strong>
+            </div>
           <% else %>
-              <div class="chat-fukidashi" style="text-align: left;">
-                <strong><%= m.content %></strong>
-              </div>
+            <div class="chat-fukidashi" style="text-align: left;">
+              <strong><%= m.content %></strong>
+            </div>
           <% end %>
         <% end %>
       <% end %>
     </div>
+    
     <div class="errors">
       <%= render "layouts/errors", obj: @message %>
     </div>
+    
     <div class="posts">
       <%= form_with model: @message, local: false do |f| %>
         <%= f.text_field :message, placeholder: "140字以内でメッセージを入力してください", size: 70, class: "form-text-field" %>
