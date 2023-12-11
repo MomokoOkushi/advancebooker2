@@ -8,6 +8,8 @@ before_action :ensure_correct_user, only: [:update, :edit]
     @booknew = Book.new
     @book_comment = BookComment.new
     @book_detail = Book.find(params[:id])
+    
+    #閲覧数カウントbook.rbにて定義済
     unless ReadCount.find_by(user_id:current_user.id, book_id: @book_detail.id)
       current_user.read_counts.create(book_id: @book_detail.id)
     end

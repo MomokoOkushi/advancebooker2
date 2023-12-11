@@ -2,9 +2,7 @@ class Book < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
-  
-  #閲覧数カウントのリレーション
-  has_many :read_counts, dependent: :destroy
+  has_many :read_counts, dependent: :destroy   #閲覧数カウントのリレーション
 
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
@@ -27,6 +25,4 @@ class Book < ApplicationRecord
       @book = Book.all
     end
   end
-
-  
 end
